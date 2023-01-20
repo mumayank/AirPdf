@@ -1,9 +1,7 @@
-<img src="https://www.clipartkey.com/mpngs/m/206-2064011_download-pdf-icon-svg-clipart-png-download-pdf.png" width="80" height="200" />
-<img src="https://static.vecteezy.com/system/resources/previews/000/450/367/original/android-vector-icon.jpg" width="80" height="200" />
-
 # AirPdf
 ### An android library to download and render large PDF from within your app.
 
+[![](https://jitpack.io/v/mumayank/airqr.svg)](https://jitpack.io/#mumayank/airqr)
 ___
 
 
