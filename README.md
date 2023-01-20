@@ -25,9 +25,21 @@ ___
 
 ### Usage
 
+In project-level `build.gradle`
+```gradle
+allprojects {
+  repositories {
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
 
-
-
+In app-level `build.gradle`
+```gradle
+dependencies {
+    implementation "com.github.mumayank:airpdf:+"
+}
+```
 ___
 
 
