@@ -10,21 +10,21 @@ import java.net.URL
 
 object FileDownloadHelper {
 
-    suspend fun downloadFromUrlAndGetName(
-        cacheDir: File,
+    internal suspend fun downloadPdfFromUrlWriteToFileAndGetFilename(
+        dir: File,
         url: String
     ): String? {
         return try {
             withContext(Dispatchers.IO) {
                 val fileName = System.currentTimeMillis().toString()
-                val pdfFile = File.createTempFile(fileName, null, cacheDir)
+                val pdfFile = File.createTempFile(fileName, null, dir)
                 val urls = URL(url)
                 val urlConnection = urls.openConnection() as HttpURLConnection
                 urlConnection.connect()
                 val inputStream = urlConnection.inputStream
                 val fileOutputStream = FileOutputStream(pdfFile)
                 val buffer = ByteArray(SIZE)
-                var bufferLength = 0
+                var bufferLength: Int
                 while (inputStream.read(buffer).also { bufferLength = it } > 0) {
                     fileOutputStream.write(buffer, 0, bufferLength)
                 }
@@ -34,14 +34,6 @@ object FileDownloadHelper {
         } catch (e: java.lang.Exception) {
             Log.e(LOG, e.toString())
             null
-        }
-    }
-
-    suspend fun deleteAllDownloadedFiles(
-        cacheDir: File
-    ) {
-        withContext(Dispatchers.IO) {
-            cacheDir.deleteRecursively()
         }
     }
 
