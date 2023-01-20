@@ -1,7 +1,7 @@
 # AirPdf
 ### An android library to download and render large PDF from within your app.
 
-[![](https://jitpack.io/v/mumayank/airqr.svg)](https://jitpack.io/#mumayank/airqr)
+[![](https://jitpack.io/v/mumayank/airpdf.svg)](https://jitpack.io/#mumayank/airpdf)
 ___
 
 
