@@ -19,7 +19,7 @@ ___
 
 ### Demo
 
-[Video Link](https://drive.google.com/file/d/1O5M0sIrv3gql9nfrHJUZ9pUQUi9UDz39/view?usp=share_link)
+[Video Link](https://github.com/mumayank/AirPdf/blob/main/pdf_demo.mp4)
 
 ___
 
