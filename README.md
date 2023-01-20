@@ -42,8 +42,71 @@ dependencies {
     implementation "com.github.mumayank:airpdf:+"
 }
 ```
+
+#### Note: Most helper methods are suspended, so it is recommended to use `ViewModel` to call them.
+
+To open a PDF file from asset
+```kotlin
+val filename = FileHelper.getFileName(cacheDir, assetManager, assetFileName)
+```
+
+To download a PDF file from URL
+```kotlin
+val filename = FileHelper.getFileName(cacheDir, url)
+```
+
+To get last index of the given PDF file
+```kotlin
+val lastIndex = PdfHelper.getLastIndex(cacheDir, filename)
+```
+
+#### Usually, a PDF is of `A4` size. So, it makes sense to set the height of your `ImageView` as `A4` size (i.e., make `width` = `match_parent` and then set `height` as `A4` ratio.
+
+To get measured height and width of your `ImageView`
+```kotlin
+with(zoomageView) {
+    post {
+        // get `width` from here
+    }
+}
+
+// then use the `width` here
+val viewMeasurement = PdfHelper.getImageViewMeasurements(width)
+```
+
+To get `Bitmap` of a PDF page
+```kotlin
+val bitmap = PdfHelper.getBitmap(cacheDir, filename, viewMeasurement, index)
+```
+
+You may use the provided `zoomageView` (which is an `ImageView` that is zoomable) in your layout
+```xml
+<com.mumayank.airpdf.helpers.zoomage_view.ZoomageView
+    android:id="@+id/zoomage_view"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginBottom="12dp"
+    android:src="@drawable/rect_outline"
+    app:layout_constraintBottom_toTopOf="@id/previousButton"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:zoomage_animateOnReset="true"
+    app:zoomage_autoCenter="true"
+    app:zoomage_autoResetMode="UNDER"
+    app:zoomage_maxScale="8"
+    app:zoomage_minScale="0.6"
+    app:zoomage_restrictBounds="false"
+    app:zoomage_translatable="true"
+    app:zoomage_zoomable="true" />
+```
+(credits to [`zoomageView`](https://github.com/jsibbold/zoomage))
+
+That's all!
 ___
 
+## Extras
+___
 
 ### Problem Statement
 In android, it is not very straightforward to render PDFs from 'within your app'.
