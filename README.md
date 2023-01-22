@@ -3,14 +3,12 @@
 
 [![](https://jitpack.io/v/mumayank/airpdf.svg)](https://jitpack.io/#mumayank/airpdf)
 
-- Helps in rendering PDF pages as `Bitmap`s
-- Uses native `PdfRenderer` internally
-- Works with PDFs in `assets` folder
-- Also works with PDFs present online (via their URL). The lib downloads the PDF using Buffer (no file size limit) and then renders the PDF pages using `Bitmap`s
-- Deletes the original PDF file after downloading and converting pages into `Bitmap`s
-- Recommends using `cacheDir` for storing `Bitmap`s so that Android OS can remove the files later automatically
-    - Developers are free to provide `fileDir` to store `Bitmap`s permanently
-    - Provides helper methods to delete `Bitmap`s after user has navigated away from PDF rendering screen (optional)
+- Uses `PdfRenderer` to help render large PDFs as `Bitmap`s
+- Works with PDFs
+    - in `assets` folder
+    - present online (via their `URL`). The lib downloads even large PDFs using `Buffer`. Also, deletes the PDF after converting
+- Developers are free to choose if `Bitmap`s should be store temporarily or permanently
+- Provides helper methods to delete `Bitmap`s after user has navigated away from PDF rendering screen (optional)
 - Uses `coroutines` with appropriate `Dispatchers` internally
 
 ___
@@ -19,8 +17,6 @@ ___
 
 (Loads a big GIF, may take a while)
 ![demo6](https://user-images.githubusercontent.com/8118918/213925311-c189f071-64a0-4d84-a4a9-bad7609fdd68.gif)
-
-
 
 ___
 
@@ -72,14 +68,14 @@ imageview.post {
 }
 ```
 
-You can use the `bitmapFilename` to show `Bitmap` in `ImageView` using image loading libs like [Glide](https://bumptech.github.io/glide/)
+You can use the `bitmapFilenames` to show `Bitmap`s in `ImageView`s using any image-loading lib like [Glide](https://bumptech.github.io/glide/)
 ```kotlin
 Glide.with(context)
     .load(File(dir, bitmapFilename))
     .into(imageView)
 ```
 
-To manually delete `Bitmap`s, call this from another screen (when the user has navigated away from the PDF rendering screen:
+(Optional) To manually delete `Bitmap`s, call this from another screen (when the user has navigated away from the PDF rendering screen
 ```
 PdfHelper.deleteBitmaps(
   cacheDir, 
@@ -87,7 +83,7 @@ PdfHelper.deleteBitmaps(
 )
 ```
 
-If you want to zoom in/out of the `ImageView` use [`zoomageView`](https://github.com/jsibbold/zoomage)
+If you want to zoom in/out in `ImageView`, use [`zoomageView`](https://github.com/jsibbold/zoomage)
 
 That's all!
 ___
