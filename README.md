@@ -45,7 +45,7 @@ dependencies {
 For PDF from `assets` folder:
 ```kotlin
 val bitmapFilenames = PdfHelper.getBitmapFilenames(
-    cacheDir,       // or fileDir
+    dir,
     assetManager,
     assetFilename,
     width
@@ -55,21 +55,24 @@ val bitmapFilenames = PdfHelper.getBitmapFilenames(
 For PDF from URL:
 ```kotlin
 val bitmapFilenames = PdfHelper.getBitmapFilenames(
-    cacheDir,      // or fileDir 
+    dir,
     url,
     width
 )
 ```
 
+`dir` is `cacheDir` or `fileDir` where you want to store the bitmap files
+
 `width` is the width of the `ImageView` that is going to host the bitmap(s)
-We need this to render the given PDF pages in `A4` sizes (Height is set in the ratio of the width so as to show a `A4` page)
-```
+We need this to render the given PDF pages in `A4` sizes 
+(Height is set in the ratio of the width so as to show a `A4` page)
+```kotlin
 imageview.post {
   // get width from here
 }
 ```
 
-You can use the `bitmapFilename` to show `Bitmap` in `ImageView` using image loading libs like (Glide)[https://bumptech.github.io/glide/]
+You can use the `bitmapFilename` to show `Bitmap` in `ImageView` using image loading libs like [Glide](https://bumptech.github.io/glide/)
 ```kotlin
 Glide.with(context)
     .load(File(dir, bitmapFilename))
@@ -89,10 +92,9 @@ If you want to zoom in/out of the `ImageView` use [`zoomageView`](https://github
 That's all!
 ___
 
-## Extras
-___
+## FAQs
 
-### Problem Statement
+### Motivation for making this lib?
 In android, it is not very straightforward to render PDFs from 'within your app'.
 
 ___
@@ -122,13 +124,12 @@ This approach is not recommended for the following reasons:
 There's a library [barteksc/AndroidPdfViewer](https://github.com/barteksc/AndroidPdfViewer) for this. Possible downsides:
 
 - It [increases app size](https://github.com/barteksc/AndroidPdfViewer#why-resulting-apk-is-so-big) by a lot (~16MB)
-- Integrating a 3rd party library needs extensive security review by auditors
 
 #3
 
 There is another paid library by [pspdfkit](https://pspdfkit.com/pdf-sdk/android/). Possible downsides:
 
-- It is expensive
+- Incurs cost
 - Not easy to customize the use-case or UX
 
 ___
@@ -144,4 +145,3 @@ Downsides:
 - `PdfRenderer` class is not thread-safe.
 - If we want to render a PDF, we first need to get a `ParcelFileDescriptorfrom` the file and then create a renderer instance.
 
-___
