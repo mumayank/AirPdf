@@ -19,7 +19,8 @@ ___
 
 ### Demo
 
-![demo2](https://user-images.githubusercontent.com/8118918/213923162-d8deeaa0-49f1-4003-9e12-de9104cf54ce.gif)
+(Loads GIF, may take a while)
+![demo4](https://user-images.githubusercontent.com/8118918/213924820-b6325e82-048e-41af-b7f7-e5be064d72eb.gif)
 
 ___
 
@@ -66,6 +67,13 @@ We need this to render the given PDF pages in `A4` sizes (Height is set in the r
 imageview.post {
   // get width from here
 }
+```
+
+You can use the `bitmapFilename` to show `Bitmap` in `ImageView` using image loading libs like (Glide)[https://bumptech.github.io/glide/]
+```kotlin
+Glide.with(context)
+    .load(File(dir, bitmapFilename))
+    .into(imageView)
 ```
 
 To manually delete `Bitmap`s, call this from another screen (when the user has navigated away from the PDF rendering screen:
