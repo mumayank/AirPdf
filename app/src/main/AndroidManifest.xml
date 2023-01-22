@@ -12,14 +12,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.WebViewWithPDF"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".pdf_as_bitmap.PdfAsBitmapActivity"
-            android:exported="false" />
-        <activity
-            android:name=".pdf_from_link.PdfFromLinkActivity"
+            android:name=".pdf_in_rv.PdfInRvActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

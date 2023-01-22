@@ -7,33 +7,13 @@
     tools:context=".HomeActivity">
 
     <Button
-        android:id="@+id/pdfFromAssetsButton"
+        android:id="@+id/rvButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Text PDF from Assets"
+        android:layout_marginTop="16dp"
+        android:text="Rv Pdf from Asset"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/imagePdfButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:text="Image Pdf from URL"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdfFromAssetsButton" />
-
-    <Button
-        android:id="@+id/largePdfButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Large Pdf from URL"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePdfButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
