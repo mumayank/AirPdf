@@ -3,8 +3,6 @@
 
 [![](https://jitpack.io/v/mumayank/airpdf.svg)](https://jitpack.io/#mumayank/airpdf)
 
-### Presenting AirPdf
-
 - Helps in rendering PDF pages as `Bitmap`s
 - Uses native `PdfRenderer` internally
 - Works with PDFs in `assets` folder
