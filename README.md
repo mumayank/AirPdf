@@ -2,26 +2,24 @@
 ### An android library to download and render large PDF from within your app.
 
 [![](https://jitpack.io/v/mumayank/airpdf.svg)](https://jitpack.io/#mumayank/airpdf)
-___
-
 
 ### Presenting AirPdf
 
-- Helps in rendering PDF pages as `Bitmap`
+- Helps in rendering PDF pages as `Bitmap`s
 - Uses native `PdfRenderer` internally
-- Provides `ZoomableImageView` so that users can zoom in into PDF pages
-- Has helper methods to show PDFs from `Assets` folder (shipped with the app)
-- Or you could just provide the URL and it will download PDF internally using Buffer (no file size limit) and then render the PDF
-- Uses `cacheDir` to store the downloaded PDF (Android OS is free to delete this dir if required), and also provies helper method to delete the file
+- Works with PDFs in `assets` folder
+- Also works with PDFs present online (via their URL). The lib downloads the PDF using Buffer (no file size limit) and then renders the PDF pages using `Bitmap`s
+- Deletes the original PDF file after downloading and converting pages into `Bitmap`s
+- Recommends using `cacheDir` for storing `Bitmap`s so that Android OS can remove the files later automatically
+    - Developers are free to provide other dir to store `Bitmap`s permanently
+    - Provides helper methods to delete `Bitmap`s after user has navigated away from PDF rendering screen (optional)
 - Uses `coroutines` with appropriate `Dispatchers` internally
 
 ___
 
 ### Demo
-<img width="466" alt="image" src="https://user-images.githubusercontent.com/8118918/213729760-432f689f-971f-41ce-bba5-ecd9aed7f60e.png">
 
-<img width="462" alt="image" src="https://user-images.githubusercontent.com/8118918/213729956-caf63246-dadf-4b1a-8bed-99c2c864fddd.png">
-
+![demo2](https://user-images.githubusercontent.com/8118918/213923162-d8deeaa0-49f1-4003-9e12-de9104cf54ce.gif)
 
 ___
 
@@ -43,64 +41,42 @@ dependencies {
 }
 ```
 
-#### Note: Most helper methods are suspended, so it is recommended to use `ViewModel` to call them.
-
-To open a PDF file from asset
+For PDF from `assets` folder:
 ```kotlin
-val filename = FileHelper.getFileName(cacheDir, assetManager, assetFileName)
+val bitmapFilenames = PdfHelper.getBitmapFilenames(
+    cacheDir,       // or fileDir
+    assetManager,
+    assetFilename,
+    width
+)
 ```
 
-To download a PDF file from URL
+For PDF from URL:
 ```kotlin
-val filename = FileHelper.getFileName(cacheDir, url)
+val bitmapFilenames = PdfHelper.getBitmapFilenames(
+    cacheDir,      // or fileDir 
+    url,
+    width
+)
 ```
 
-To get last index of the given PDF file
-```kotlin
-val lastIndex = PdfHelper.getLastIndex(cacheDir, filename)
+`width` is the width of the `ImageView` that is going to host the bitmap(s)
+We need this to render the given PDF pages in `A4` sizes (Height is set in the ratio of the width so as to show a `A4` page)
 ```
-
-#### Usually, a PDF is of `A4` size. So, it makes sense to set the height of your `ImageView` as `A4` size (i.e., make `width` = `match_parent` and then set `height` as `A4` ratio.
-
-To get measured height and width of your `ImageView`
-```kotlin
-with(zoomageView) {
-    post {
-        // get `width` from here
-    }
+imageview.post {
+  // get width from here
 }
-
-// then use the `width` here
-val viewMeasurement = PdfHelper.getImageViewMeasurements(width)
 ```
 
-To get `Bitmap` of a PDF page
-```kotlin
-val bitmap = PdfHelper.getBitmap(cacheDir, filename, viewMeasurement, index)
+To manually delete `Bitmap`s, call this from another screen (when the user has navigated away from the PDF rendering screen:
+```
+PdfHelper.deleteBitmaps(
+  cacheDir, 
+  bitmapFilenames
+)
 ```
 
-You may use the provided `zoomageView` (which is an `ImageView` that is zoomable) in your layout
-```xml
-<com.mumayank.airpdf.helpers.zoomage_view.ZoomageView
-    android:id="@+id/zoomage_view"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginBottom="12dp"
-    android:src="@drawable/rect_outline"
-    app:layout_constraintBottom_toTopOf="@id/previousButton"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:zoomage_animateOnReset="true"
-    app:zoomage_autoCenter="true"
-    app:zoomage_autoResetMode="UNDER"
-    app:zoomage_maxScale="8"
-    app:zoomage_minScale="0.6"
-    app:zoomage_restrictBounds="false"
-    app:zoomage_translatable="true"
-    app:zoomage_zoomable="true" />
-```
-(credits to [`zoomageView`](https://github.com/jsibbold/zoomage))
+If you want to zoom in/out of the `ImageView` use [`zoomageView`](https://github.com/jsibbold/zoomage)
 
 That's all!
 ___
