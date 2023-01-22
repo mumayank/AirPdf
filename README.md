@@ -11,7 +11,7 @@
 - Also works with PDFs present online (via their URL). The lib downloads the PDF using Buffer (no file size limit) and then renders the PDF pages using `Bitmap`s
 - Deletes the original PDF file after downloading and converting pages into `Bitmap`s
 - Recommends using `cacheDir` for storing `Bitmap`s so that Android OS can remove the files later automatically
-    - Developers are free to provide other dir to store `Bitmap`s permanently
+    - Developers are free to provide `fileDir` to store `Bitmap`s permanently
     - Provides helper methods to delete `Bitmap`s after user has navigated away from PDF rendering screen (optional)
 - Uses `coroutines` with appropriate `Dispatchers` internally
 
