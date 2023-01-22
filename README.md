@@ -17,8 +17,10 @@ ___
 
 ### Demo
 
-(Loads GIF, may take a while)
-![demo4](https://user-images.githubusercontent.com/8118918/213924820-b6325e82-048e-41af-b7f7-e5be064d72eb.gif)
+(Loads a big GIF, may take a while)
+![demo6](https://user-images.githubusercontent.com/8118918/213925311-c189f071-64a0-4d84-a4a9-bad7609fdd68.gif)
+
+
 
 ___
 
