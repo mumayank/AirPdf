@@ -1,4 +1,4 @@
-package com.example.webviewwithpdf.pdf_in_rv
+package com.mumayank.airpdf.implementation.pdf_in_rv
 
 import android.content.res.AssetManager
 import androidx.lifecycle.LiveData

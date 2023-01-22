@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".pdf_in_rv.PdfInRvActivity">
+    tools:context="com.mumayank.airpdf.implementation.pdf_in_rv.PdfInRvActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"

@@ -1,4 +1,4 @@
-package com.example.webviewwithpdf.pdf_in_rv
+package com.mumayank.airpdf.implementation.pdf_in_rv
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.webviewwithpdf.databinding.LayoutPdfInRvBinding
+import com.mumayank.airpdf.implementation.databinding.LayoutPdfInRvBinding
 import java.io.File
 
 class PdfInRv(

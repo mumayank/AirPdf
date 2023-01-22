@@ -1,4 +1,4 @@
-package com.example.webviewwithpdf
+package com.mumayank.airpdf
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

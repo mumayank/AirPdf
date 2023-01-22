@@ -1,12 +1,11 @@
-package com.example.webviewwithpdf.pdf_in_rv
+package com.mumayank.airpdf.implementation.pdf_in_rv
 
-import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import com.example.webviewwithpdf.App
-import com.example.webviewwithpdf.databinding.ActivityPdfInRvBinding
+import com.mumayank.airpdf.implementation.App
+import com.mumayank.airpdf.implementation.databinding.ActivityPdfInRvBinding
 
 class PdfInRvActivity : AppCompatActivity() {
 

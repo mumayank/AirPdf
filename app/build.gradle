@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace 'com.example.webviewwithpdf'
+    namespace 'com.mumayank.airpdf.implementation'
     compileSdk 33
     defaultConfig {
-        applicationId "com.example.webviewwithpdf"
+        applicationId "com.mumayank.airpdf.implementation"
         minSdk 23
         targetSdk 33
         versionCode 1

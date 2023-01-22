@@ -1,12 +1,12 @@
-package com.example.webviewwithpdf
+package com.mumayank.airpdf.implementation
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.webviewwithpdf.databinding.ActivityHomeBinding
-import com.example.webviewwithpdf.pdf_in_rv.PdfInRvActivity
+import com.mumayank.airpdf.implementation.pdf_in_rv.PdfInRvActivity
 import com.mumayank.airpdf.helpers.PdfHelper
+import com.mumayank.airpdf.implementation.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
