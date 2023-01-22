@@ -36,14 +36,6 @@ object PdfHelper {
         return getBitmapFilenamesFromPdf(dir, pdfFilename, width)
     }
 
-    suspend fun cleanup(
-        dir: File
-    ) {
-        withContext(Dispatchers.IO) {
-            dir.deleteRecursively()
-        }
-    }
-
     private suspend fun getBitmapFilenamesFromPdf(
         dir: File,
         pdfFilename: String,
@@ -65,6 +57,7 @@ object PdfHelper {
                     break
                 }
             }
+            File(dir, pdfFilename).delete()
             if (bitmapFilenames.isEmpty()) {
                 return@withContext null
             }
@@ -107,6 +100,12 @@ object PdfHelper {
             val a4ratio = 1.35
             val imageViewA4Height = width * a4ratio
             imageViewA4Height.toInt()
+        }
+    }
+
+    fun deleteBitmaps(dir: File, bitmapFilenames: List<String>) {
+        for (bitmapFilename in bitmapFilenames) {
+            File(dir, bitmapFilename).delete()
         }
     }
 

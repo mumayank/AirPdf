@@ -16,7 +16,7 @@ class PdfInRvViewModel : ViewModel() {
     }
     val bitmapFilenames: LiveData<List<String>> = _bitmapFilenames
 
-    fun getBitmapFilenames(
+    fun updateBitmapFilename(
         dir: File,
         assetManager: AssetManager,
         assetFilename: String,
@@ -32,7 +32,7 @@ class PdfInRvViewModel : ViewModel() {
         }
     }
 
-    fun getBitmapFilenames(
+    fun updateBitmapFilename(
         dir: File,
         url: String,
         width: Int
@@ -43,14 +43,6 @@ class PdfInRvViewModel : ViewModel() {
                 url,
                 width
             )
-        }
-    }
-
-    fun cleanup(
-        dir: File
-    ) {
-        viewModelScope.launch {
-            PdfHelper.cleanup(dir)
         }
     }
 
